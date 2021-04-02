@@ -68,14 +68,18 @@ class DB
     public function where($column, $value, $oper = '=')
     {
         if ($this->where_condition) {
-            $this->where_condition .= " AND $column $oper '$value' ";
+            $this->where_condition .= " AND $column $oper $value ";
+        } else {
+            $this->where_condition .= " WHERE $column $oper $value ";
         }
         return $this;
     }
     public function or_where($column, $value, $oper = '=')
     {
         if ($this->where_condition) {
-            $this->where_condition .= " OR $column $oper '$value' ";
+            $this->where_condition .= " OR $column $oper $value ";
+        } else {
+            $this->where_condition .= " WHERE $column $oper $value ";
         }
         return $this;
     }
